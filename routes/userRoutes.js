@@ -1,11 +1,14 @@
 import express from "express";
 
-import { formLogin, formRegister, formPasswordRestore} from "../controllers/userController.js";
+import { formLogin, formRegister, formPasswordRestore, userRegister} from "../controllers/userController.js";
 
 const router = express.Router();
 
 router.get('/login', formLogin)
-router.get('/register', formRegister)
 router.get('/restore', formPasswordRestore)
+
+router.route('/registrar')
+    .get(formRegister)
+    .post(userRegister)
 
 export default router

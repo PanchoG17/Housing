@@ -5,8 +5,14 @@ import db from './config/db.js' // Import DB
 // Instanciar servidor express
 const app = express();
 
+// Habilitar request desde formularios
+app.use(express.urlencoded({ extended:true }))
+
 try {
     await db.authenticate();
+
+    // Sincronizar modelos a la BD (Migración)
+    db.sync()
     console.log('Connection has been established successfully.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);

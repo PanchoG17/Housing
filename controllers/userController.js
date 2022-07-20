@@ -25,8 +25,13 @@ const formPasswordRestore = (req, res) => {
     });
 }
 
+const userRegister = (req, res) => {
+
+}
+
 export {
     formLogin,
     formRegister,
-    formPasswordRestore
+    formPasswordRestore,
+    userRegister
 }
