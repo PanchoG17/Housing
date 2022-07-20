@@ -2,7 +2,7 @@ const formLogin = (req, res) => {
 
     res.render('auth/login.pug', {
 
-        activo: false
+        title: "Iniciar sesión"
 
     });
 }
@@ -16,7 +16,17 @@ const formRegister = (req, res) => {
     });
 }
 
+const formPasswordRestore = (req, res) => {
+
+    res.render('auth/restore.pug', {
+
+        title: "Restaurar contraseña"
+
+    });
+}
+
 export {
     formLogin,
-    formRegister
+    formRegister,
+    formPasswordRestore
 }

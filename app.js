@@ -1,11 +1,16 @@
-// Importar modulo express
-import express from 'express';
-
-// Importar routes
-import usuarioRoutes from './routes/userRoutes.js'
+import express from 'express'; // Importar modulo express
+import usuarioRoutes from './routes/userRoutes.js' // Importar routes
+import db from './config/db.js' // Import DB
 
 // Instanciar servidor express
 const app = express();
+
+try {
+    await db.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
 
 // Habilitar PUG
 app.set('view engine', 'pug')
@@ -23,6 +28,6 @@ const port = 3000;
 // Inicializar servidor en puerto asignado
 app.listen(port, () => {
 
-    console.log(`Server running in port ${port}`);
+    console.log(`Server is RUNNING in port ${port}`);
 
 })
