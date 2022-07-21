@@ -12,8 +12,10 @@
   "author": "fguardia",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "express-validator": "^6.14.2",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
     "pug": "^3.0.2",
