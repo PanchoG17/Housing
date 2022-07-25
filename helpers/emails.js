@@ -38,6 +38,39 @@ const emailRegistro = async (datos) => {
 
 }
 
+const emailRestorePassword = async (datos) => {
+
+    const transport = nodemailer.createTransport({
+      host: process.env.EMAIL_NAME,
+      port: process.env.EMAIL_PORT,
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+
+    const {nombre, email, token } = datos
+
+    // Enviar email
+    await transport.sendMail({
+
+      from: 'Housing.com',
+      to: email,
+      subject: 'Restablecimiento de contraseña',
+      text: 'Restablecimiento de contraseña',
+      html: `
+
+          <p> Hola ${nombre}, hemos recibido una solicitud de restablecimiento de tu contraseña. </p>
+
+          <a href="${process.env.BACKEND_URL}:${process.env.PORT ?? 3000}/auth/restore/${token}"> RESTABLECER CONTRASEÑA </a></p>
+
+          <p> Si no deseas restablecerla, puedes ignorar este correo electrónico. </p>
+
+      `
+    })
+}
+
 export {
-    emailRegistro
+    emailRegistro,
+    emailRestorePassword
 }
