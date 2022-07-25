@@ -12,7 +12,8 @@ const formLogin = (req, res) => {
 
     res.render('auth/login.pug', {
 
-        title: 'Iniciar sesión'
+        title: 'Iniciar sesión',
+        csrfToken: req.csrfToken(),
 
     });
 }
@@ -21,7 +22,8 @@ const formRegister = (req, res) => {
 
     res.render('auth/register.pug', {
 
-        title: 'Registrarse'
+        title: 'Registrarse',
+        csrfToken: req.csrfToken()
 
     });
 }
@@ -30,7 +32,8 @@ const formPasswordRestore = (req, res) => {
 
     res.render('auth/restore.pug', {
 
-        title: 'Restaurar contraseña'
+        title: 'Restaurar contraseña',
+        csrfToken: req.csrfToken(),
 
     });
 }
@@ -52,6 +55,7 @@ const userRegister = async (req, res) => {
         return res.render('auth/register', {
             title: 'Registrarse',
             errores: resultado.array(),
+            csrfToken: req.csrfToken(),
             user: { nombre, email }
         })
     }
@@ -62,6 +66,7 @@ const userRegister = async (req, res) => {
         return res.render('auth/register', {
             title: 'Registrarse',
             errores: [{msg: 'El usuario ya se encuentra registrado'}],
+            csrfToken: req.csrfToken(),
             user: { nombre, email }
         })
     }
@@ -87,6 +92,7 @@ const userRegister = async (req, res) => {
 
         return res.render('auth/register', {
             title: 'Registrarse',
+            csrfToken: req.csrfToken(),
             success: [
                 {msg: 'Usuario registrado correctamente'},
                 {msg: `Se envió un mail de verificación a ${email}`}
@@ -122,6 +128,7 @@ const confirmarUsuario = async (req, res) => {
 
             title: `Bienvenido ${usuario.nombre}`,
             msg: '¡Tu cuenta fue confirmada correctamente!',
+            csrfToken: req.csrfToken(),
             error: false
 
         })

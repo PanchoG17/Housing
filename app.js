@@ -1,4 +1,7 @@
 import express from 'express'; // Importar modulo express
+import csrf from 'csurf';
+import cookieParser from 'cookie-parser';
+
 import usuarioRoutes from './routes/userRoutes.js' // Importar routes
 import db from './config/db.js' // Import DB
 
@@ -7,6 +10,12 @@ const app = express();
 
 // Habilitar request desde formularios
 app.use(express.urlencoded({ extended:true }))
+
+// Habilitar Cookie Parser
+app.use( cookieParser() )
+
+// Habilitar CSRF
+app.use( csrf({cookie: true}))
 
 try {
     await db.authenticate();
