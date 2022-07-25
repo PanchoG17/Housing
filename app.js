@@ -29,7 +29,7 @@ app.use(express.static('public'))
 app.use('/auth' , usuarioRoutes)
 
 // Definir puerto
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Inicializar servidor en puerto asignado
 app.listen(port, () => {

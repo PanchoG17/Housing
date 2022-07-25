@@ -3,9 +3,9 @@ extends ../layouts/base
 block content
 
     .py-10
-        h1.text-4xl.my-10.font-extrabold.text-center Housing.com
+        h1.text-4xl.my-10.font-extrabold.text-center.text-white Housing.com
 
-        h2.text-center.text-2xl=title
+        h2.text-center.text-2xl.text-white=title
 
         .mt-8.mx-auto.max-w-md
             .bg-white.py-8.px-4.shadow-2xl
@@ -20,6 +20,6 @@ block content
                     input(class="py-2 w-full text-white bg-blue-600 font-bold hover:bg-blue-700 hover:cursor-pointer" type="submit" value="Iniciar sesión")
 
                     div.flex.items-center.justify-between
-                        a.text-gray-500.text-xs(href="/auth/register") ¿No tienes cuenta? Registrate
-                        a.text-gray-500.text-xs(href="/auth/restore") Olvide mi contraseña
+                        a.text-gray-500.text-xs(href="/auth/registrar" class="hover:text-gray-900") ¿No tienes cuenta? Registrate
+                        a.text-gray-500.text-xs(href="/auth/restore" class="hover:text-gray-900") Olvide mi contraseña
 

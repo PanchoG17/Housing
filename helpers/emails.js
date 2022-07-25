@@ -25,10 +25,10 @@ const emailRegistro = async (datos) => {
 
             <p> Hola ${nombre}, confirmá tu cuenta para acceder housing.com y descubrir las oportunidades que tenemos para vos </p>
 
-            <a href=""> Confirmar Cuenta </a> </p>
+            <a href="${process.env.BACKEND_URL}:${process.env.PORT ?? 3000}/auth/confirmar/${token}"> Confirmar Cuenta </a> </p>
 
-            <p> Si no creaste una cuenta en housing.com descartá este mensaje </p>
-        
+            <p> Si tú no creaste una cuenta en housing.com podes descartar este mensaje </p>
+
         `
 
       })

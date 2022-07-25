@@ -1,5 +1,9 @@
 import { check, validationResult } from 'express-validator';
+
+//Models
 import User from '../models/User.js'
+
+//Helpers
 import { generarToken } from '../helpers/tokens.js'
 import { emailRegistro } from '../helpers/emails.js'
 
@@ -92,9 +96,42 @@ const userRegister = async (req, res) => {
     }
 }
 
+const confirmarUsuario = async (req, res) => {
+
+    const token = req.params.token;
+
+    // Comprobar si el usuario existe
+    let usuario = await User.findOne({ where: { token }});
+
+    if (!usuario) {
+
+        res.render('auth/confirmar.pug', {
+
+            title: 'Confirmar cuenta',
+            msg: 'No se pudo verificar el usuario, intente nuevamente mas tárde',
+            error: true
+
+        })
+    }else{
+
+        usuario.token = null;
+        usuario.confirmado = true;
+        await usuario.save();
+
+        res.render('auth/confirmar.pug', {
+
+            title: `Bienvenido ${usuario.nombre}`,
+            msg: '¡Tu cuenta fue confirmada correctamente!',
+            error: false
+
+        })
+    }
+}
+
 export {
     formLogin,
     formRegister,
     formPasswordRestore,
-    userRegister
+    userRegister,
+    confirmarUsuario
 }
