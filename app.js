@@ -3,6 +3,8 @@ import csrf from 'csurf';
 import cookieParser from 'cookie-parser';
 
 import usuarioRoutes from './routes/userRoutes.js' // Importar routes
+import propiedadesRoutes from './routes/propiedadesRoutes.js' // Importar routes
+
 import db from './config/db.js' // Import DB
 
 // Instanciar servidor express
@@ -36,6 +38,8 @@ app.use(express.static('public'))
 
 // Routing
 app.use('/auth' , usuarioRoutes)
+app.use('/' , propiedadesRoutes)
+
 
 // Definir puerto
 const port = process.env.PORT || 3000;
