@@ -32,4 +32,12 @@ const User = db.define('usuarios', {
     }
 })
 
+// Metodos Personalizados
+
+User.prototype.checkPassword = function(password){
+
+    return bcrypt.compareSync(password, this.password)
+
+}
+
 export default User
