@@ -258,13 +258,18 @@ const restorePassword = async (req, res) => {
         usuario.token = generarToken();
         await usuario.save();
 
-        emailRestorePassword ({
+        try {
+            emailRestorePassword ({
 
-            nombre : usuario.nombre,
-            email : usuario.email,
-            token : usuario.token
+                nombre : usuario.nombre,
+                email : usuario.email,
+                token : usuario.token
 
-        })
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
 
         return res.render('auth/restore', {
             title: 'Restablecer contraseña',

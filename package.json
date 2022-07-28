@@ -7,7 +7,9 @@
   "scripts": {
     "start": " node ./app.js",
     "server": " nodemon ./app.js",
-    "css": " postcss public/css/tailwind.css -o public/css/app.css --watch"
+    "css": " postcss public/css/tailwind.css -o public/css/app.css --watch",
+    "js": "webpack --watch",
+    "dev": "concurrently \" npm run css \" \" npm run js \""
   },
   "author": "fguardia",
   "license": "ISC",
@@ -27,9 +29,12 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
+    "concurrently": "^7.3.0",
     "nodemon": "^2.0.19",
     "postcss": "^8.4.14",
     "postcss-cli": "^10.0.0",
-    "tailwindcss": "^3.1.6"
+    "tailwindcss": "^3.1.6",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   }
 }

@@ -1,3 +1,5 @@
+
+
 const admin = (req, res) => {
     res.render('propiedades/admin', {
 
@@ -7,6 +9,17 @@ const admin = (req, res) => {
     })
 }
 
+const crear = (req, res) => {
+
+    res.render('propiedades/crear', {
+
+        title: 'Registrar propiedad',
+        barra: true
+
+    })
+}
+
 export {
-    admin
+    admin,
+    crear
 }

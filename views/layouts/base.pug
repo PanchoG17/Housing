@@ -7,6 +7,8 @@ html(lang="es")
         title Housing.com | #{title}
         link(rel="stylesheet", href="/css/app.css", attr)
 
+        block styles
+
     body(class="bg-gradient-to-b from-blue-800 to-blue-400").bg-no-repeat.bg-cover.min-h-screen
 
         if barra
@@ -14,3 +16,5 @@ html(lang="es")
 
         main.mx-auto.container
             block content
+
+        block scripts
