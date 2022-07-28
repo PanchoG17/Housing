@@ -15,10 +15,8 @@ block content
             form.space-y-8(action="")
 
                 div.space-y-2
-                    h3.text-lg-leading-6.font-medium.text-gray-900 Información General
-                    p.text-gray-600 Añade información destacada sobre la propiedad.
-
-                div(class="flex-grow border-t border-gray-400")
+                    h3.text-lg-leading-6.font-medium.text-gray-900 Información General:
+                    p.text-gray-600 Añade información destacada sobre la propiedad
 
                 div
                     label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold(for="titulo") Titulo
@@ -60,7 +58,18 @@ block content
                                 while n < 6
                                     option(value=n) #{n++}
 
-                #mapa.h-96
+                div.space-y-2
+                    h3.text-lg-leading-6.font-medium.text-gray-900 Ubicación:
+                    p.text-gray-600 Añade la ubicación de la propiedad
+
+                    #mapa.h-96
+
+                    div
+                        p.calle
+
+                    input(type="hidden" name="calle" id="calle")
+                    input(type="hidden" name="lat" id="lat")
+                    input(type="hidden" name="lng" id="lng")
 
 block scripts
 
